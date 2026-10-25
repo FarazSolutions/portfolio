@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faraz-Solutions</title>
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="icon" href="./images/icon.png" />
+  </head>
+  <body class="body">
+    <!-- هدر سایت -->
+    <header id="head">
+      <div class="div">
+        <div class="imagebox">
+          <img src="./images/logo-a.png" alt="logo" class="image" />
+        </div>
+      </div>
+
+      <!-- لایه تاریک پشت منو در موبایل -->
+      <div class="overlay" id="overlay"></div>
+
+      <nav class="navbar" id="navbar">
+        <ul class="navbar-menu">
+          <li class="items">
+            <i class="fa-solid fa-house"></i
+            ><a href="./index.html" class="texts">Home</a>
+          </li>
+          <li class="items">
+            <i class="fa-solid fa-user"></i
+            ><a href="#about-me-title" class="texts">About</a>
+          </li>
+          <li class="items">
+            <i class="fa-solid fa-briefcase"></i
+            ><a href="#portfolio-title" class="texts">Portfolio</a>
+          </li>
+          <li class="items">
+            <i class="fa-solid fa-envelope"></i
+            ><a href="#id" class="texts">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button
+        class="hamburger"
+        id="hamburger-btn"
+        aria-label="Toggle navigation"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </header>
+
+    <!-- بدنه اصلی -->
+    <main class="main-content" id="main-content">
+      <h2 id="about-me-title">About Me</h2>
+      <div class="about-me">
+        <section class="about">
+          <p class="about-text">
+            "Hello! I’m Faraz — a dedicated Front-End Developer and tech
+            enthusiast based in Iran. My journey into the world of technology
+            and web development comes with a unique background. As someone with
+            a professional background in healthcare and nursing studies, I’ve
+            always valued precision, empathy, empathy-driven problem-solving,
+            and attention to detail. Over time, my deep curiosity about how
+            digital systems work and how to build things from scratch inspired
+            me to transition into programming. Today, I channel that same
+            discipline and dedication into writing clean, scalable, and
+            efficient code. I specialize in modern front-end technologies,
+            focusing primarily on semantic HTML5, responsive and creative CSS3
+            (including custom layouts, variables, and modern styling
+            techniques), and dynamic JavaScript. I love bridging the gap between
+            design and functionality—turning raw ideas into polished,
+            responsive, and user-friendly web interfaces that look and work
+            great across all devices. Beyond just writing code, I am a
+            continuous learner. Whether I’m exploring advanced JavaScript
+            concepts, experimenting with UI/UX design patterns, or building
+            practical projects like Faraz-Solutions, I am always striving to
+            push my boundaries and improve my craft. My goal is to build
+            meaningful web experiences, keep growing as a developer, and
+            eventually contribute to impactful tech projects that simplify
+            people’s lives."
+          </p>
+        </section>
+      </div>
+      <br />
+      <h2 class="portfolio-title" id="portfolio-title">Portfolio</h2>
+      <br />
+      <div class="menu-card">
+        <article class="card">
+          <a href="./avin-amoozeshgah/index.html" class="card-image-link">
+            <img
+              class="card-logo"
+              src="./images/proj1.PNG"
+              alt="Avin Academy Website"
+            />
+          </a>
+          <div class="card-content">
+            <a class="card-title" href="./avin-amoozeshgah/index.html">
+              <h2>Portfolio: Avin Academy Website</h2>
+            </a>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <!-- فوتر سایت -->
+    <footer class="footer" id="footer">
+      <div class="footer-container">
+        <div class="footer-socials">
+          <a
+            href="https://github.com/FarazSolutions"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+
+          <a href="mailto:frazmrady12@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        <div class="id-container" id="id">
+          <h2>Contact Us</h2>
+          <div class="details-container">
+            <details>
+              <summary>Telegram ID</summary>
+              <p><strong>@Highhacker7</strong></p>
+            </details>
+            <details>
+              <summary>Rubika ID</summary>
+              <p><strong>@FACR777</strong></p>
+            </details>
+          </div>
+        </div>
+        <p class="footer-copy">© 2026 Faraz-Solutions. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

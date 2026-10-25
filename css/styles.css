@@ -1,0 +1,380 @@
+/* Fonts */
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-Regular.woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-Medium.woff2");
+  font-weight: 700;
+}
+
+/* متغیرها و ریست کلی */
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-body: #f8fafc;
+  --bg-surface: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --header-height: 70px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    sans-serif;
+  background-color: rgba(0, 4, 44, 0.767);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: 10px;
+  gap: 30px;
+}
+
+.about-text {
+  padding: 20px;
+  color: white;
+}
+
+.about {
+  width: 600px;
+}
+
+.about-me {
+  display: flex;
+  justify-content: center;
+  border-bottom: 3px solid black;
+  padding: 40px 10px;
+}
+
+.portfolio-title {
+  display: block;
+}
+
+/* هدر */
+#head {
+  position: sticky;
+  top: 0;
+  height: var(--header-height);
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 1000;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.div {
+  display: flex;
+  align-items: center;
+}
+
+.imagebox {
+  display: inline-flex;
+  align-items: center;
+}
+
+.image {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ناوبری دسکتاپ */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.items i {
+  font-size: 1rem;
+}
+
+.texts {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+.items:hover,
+.items:hover .texts {
+  color: var(--primary-color);
+}
+
+/* دکمه همبرگری (موبایل) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 50; /* بالاترین لایه هدر */
+}
+
+.hamburger .bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-main);
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+/* انیمیشن باز شدن دکمه همبرگری */
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* بخش اصلی (Main) */
+.main-content {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* فوتر */
+.footer {
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  padding: 2.5rem 1.5rem 1.5rem;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-socials a {
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  transition: var(--transition);
+}
+
+.footer-socials a:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.footer-copy {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* استایل overlay در حالت عادی غیرفعال */
+.overlay {
+  display: none;
+}
+
+/* بخش کارت‌های نمونه‌کار */
+.menu-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.card {
+  width: 100%;
+  max-width: 340px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 16px; /* گوشه‌های نرم و گرد */
+  overflow: hidden; /* برش خوردن لبه‌های تصویر با گوشه کارت */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* سایه نرم و مات */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* افکت شناور شدن با حرکت موس */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-link {
+  display: block;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: #f1f5f9;
+}
+
+.card-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* تناسب عکس بدون کشیدگی و دفرمه شدن */
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* زوم نرم عکس زمان هاور */
+.card:hover .card-logo {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 1.25rem;
+}
+
+.card-title {
+  text-decoration: none;
+  color: var(--text-main);
+  transition: color 0.2s ease;
+}
+
+.card-title h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.card-title:hover {
+  color: var(--primary-color);
+}
+
+.id-container {
+  border-top: 2px solid black;
+  width: 90%;
+  padding: 10px;
+}
+
+details {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
+  background: cornsilk;
+}
+
+strong {
+  color: green;
+}
+
+/* مدیاکوئری ریسپانسیو (موبایل و تبلت) */
+@media (max-width: 768px) {
+  #head {
+    padding: 0 1.25rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* لایه تاریک تمام صفحه: زیر منو */
+  .overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 30; /* زیر navbar */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* سایدبار منو: بالای لایه تاریک */
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: var(--bg-surface);
+    box-shadow: -4px 0 25px rgba(0, 0, 0, 0.2);
+    padding: calc(var(--header-height) + 2rem) 2rem 2rem;
+    transition: right 0.3s ease;
+    z-index: 40; /* قطعا بالاتر از overlay (30) */
+  }
+
+  .navbar.open {
+    right: 0;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+  }
+
+  .items {
+    font-size: 1.05rem;
+  }
+}

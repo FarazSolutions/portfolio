@@ -1,0 +1,580 @@
+/* Fonts */
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-Regular.woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-Medium.woff2");
+  font-weight: 700;
+}
+
+/* ================= RESET و متغیرها ================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #1f6f5c;
+  --color-primary-dark: #17564a;
+  --color-accent: #e8a33d;
+  --color-text: #1f2a2e;
+  --color-muted: #6b7b80;
+  --color-bg: #ffffff;
+  --color-bg-soft: #f5f8f7;
+  --color-header: #ffffff;
+  --color-footer: #10241f;
+  --radius: 12px;
+  --shadow-sm: 0 2px 8px rgba(16, 36, 31, 0.07);
+  --shadow-md: 0 8px 24px rgba(16, 36, 31, 0.12);
+  --header-height: 68px;
+  --transition: 0.25s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Vazirmatn, "Segoe UI", Tahoma, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: min(1140px, 100% - 2rem);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* ================= دکمه‌ها ================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition),
+    border-color var(--transition);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ================= هدر ================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-header);
+  border-bottom: 1px solid rgba(16, 36, 31, 0.08);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+  gap: 1rem;
+}
+
+.brand-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  letter-spacing: -0.2px;
+}
+
+/* --- دکمه همبرگری --- */
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid rgba(16, 36, 31, 0.12);
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 110;
+}
+
+.nav-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary-dark);
+  border-radius: 2px;
+  transition:
+    transform var(--transition),
+    opacity var(--transition);
+}
+
+/* تبدیل به X وقتی منو باز است */
+.nav-toggle.is-open .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle.is-open .bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.is-open .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- منوی موبایل --- */
+.main-nav {
+  position: fixed;
+  inset: var(--header-height) 0 auto 0;
+  background: var(--color-bg);
+  border-bottom: 1px solid rgba(16, 36, 31, 0.08);
+  box-shadow: var(--shadow-md);
+  padding: 1rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transform: translateY(-12px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform var(--transition),
+    opacity var(--transition),
+    visibility var(--transition);
+}
+
+.main-nav.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.85rem 0.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(16, 36, 31, 0.06);
+  transition:
+    color var(--transition),
+    padding-inline-start var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary);
+}
+
+.nav-link:hover {
+  padding-inline-start: 0.9rem;
+}
+
+.nav-cta {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ================= بخش لوگو و توضیحات ================= */
+.hero {
+  background: linear-gradient(180deg, var(--color-bg-soft), var(--color-bg));
+  padding: 3.5rem 0 3rem;
+  text-align: center;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+/* دایره لوگو */
+.logo-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition),
+    border-color var(--transition);
+}
+
+.logo-circle:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+}
+
+.logo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-placeholder-text {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.hero-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  line-height: 1.5;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.hero-desc {
+  max-width: 700px;
+  color: var(--color-muted);
+  font-size: 0.98rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* ================= بدنه (خالی) ================= */
+.site-main {
+  padding: 3rem 0;
+  min-height: 40vh;
+}
+
+/* ================= فوتر ================= */
+.site-footer {
+  background: var(--color-footer);
+  color: #cfdcd8;
+  padding-top: 3rem;
+  font-size: 0.94rem;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+}
+
+.footer-title {
+  color: #fff;
+  font-size: 1.02rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.footer-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 34px;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+.footer-about p {
+  color: #a9bcb7;
+  line-height: 2;
+}
+
+.footer-links li + li,
+.footer-contact li + li {
+  margin-top: 0.55rem;
+}
+
+.footer-links a {
+  color: #cfdcd8;
+  transition:
+    color var(--transition),
+    padding-inline-start var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--color-accent);
+  padding-inline-start: 6px;
+}
+
+.footer-contact li {
+  color: #a9bcb7;
+  word-break: break-word;
+}
+
+.footer-contact a {
+  color: #cfdcd8;
+  transition: color var(--transition);
+}
+
+.footer-contact a:hover {
+  color: var(--color-accent);
+}
+
+.social-links {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  transition:
+    background var(--transition),
+    transform var(--transition);
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  fill: #cfdcd8;
+  transition: fill var(--transition);
+}
+
+.social-link:hover {
+  background: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+.social-link:hover svg {
+  fill: #10241f;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.1rem 0;
+  text-align: center;
+  font-size: 0.86rem;
+  color: #8fa39e;
+}
+
+/* ================= ریسپانسیو: تبلت ================= */
+@media (min-width: 600px) {
+  .logo-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .footer-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================= ریسپانسیو: دسکتاپ ================= */
+@media (min-width: 900px) {
+  :root {
+    --header-height: 76px;
+  }
+
+  /* مخفی کردن دکمه همبرگری */
+  .nav-toggle {
+    display: none;
+  }
+
+  /* منوی افقی */
+  .main-nav {
+    position: static;
+    inset: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.75rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0;
+    border-bottom: 2px solid transparent;
+    font-size: 0.96rem;
+  }
+
+  .nav-link:hover {
+    padding-inline-start: 0;
+    border-bottom-color: var(--color-accent);
+  }
+
+  .nav-link.active {
+    border-bottom-color: var(--color-primary);
+  }
+
+  .nav-cta {
+    width: auto;
+    margin-top: 0;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 5rem 0 4rem;
+  }
+
+  .logo-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.image {
+  justify-content: center;
+}
+
+/* ================= بخش کارت‌های دوره‌ها ================= */
+.site-main .container {
+  display: grid;
+  /* کارت‌ها بین ۲۸۰ تا ۳۴۰ پیکسل می‌مانند و خودبه‌خود منظم ردیف می‌شوند */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  justify-content: center;
+}
+
+.cards {
+  background: yellow;
+  border: 2px solid black;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+  /* مهم: جلوگیری از بزرگ‌شدن غیرعادی کارت‌ها در صفحات خیلی عریض */
+  width: 100%;
+  max-width: 360px;
+  margin-inline: auto; /* برای سنتر ماندن در ستون */
+}
+
+.cards:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+/* حل قطعی مشکل عکس: نسبت تصویر ثابت و بدون کراپ شدن یا غیب‌شدن محتوا */
+.cards .logos {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* عکس‌ها مربعی هستند؛ کامل و شفاف نمایش داده می‌شوند */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-bottom: 1px solid rgba(16, 36, 31, 0.08);
+}
+
+/* بخش متن و لینک داخل کارت */
+.card-links {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.1rem;
+  flex-grow: 1;
+}
+
+.cards h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
+
+.discribs {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--color-muted);
+  text-align: justify;
+}
